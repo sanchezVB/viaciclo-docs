@@ -4,7 +4,7 @@ title: ViaCiclo — Documentos Legais
 
 # ViaCiclo
 
-App gratuito para ciclistas de São Paulo. Mapa de ciclovias, rastreamento de pedaladas, rotas compartilhadas pela comunidade.
+App gratuito para ciclistas brasileiros. Mapa de ciclovias, rastreamento de pedaladas, rotas compartilhadas pela comunidade.
 
 ## Documentos
 

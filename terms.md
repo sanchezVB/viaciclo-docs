@@ -14,7 +14,7 @@ Ao instalar, acessar ou usar o aplicativo **ViaCiclo**, você concorda com estes
 
 O **ViaCiclo** é um aplicativo gratuito para smartphones Android que oferece:
 
-- Visualização de ciclovias e ciclofaixas de São Paulo
+- Visualização de ciclovias e ciclofaixas em cidades brasileiras
 - Cálculo de rotas seguras para bicicleta
 - Rastreamento de pedaladas com GPS
 - Compartilhamento de rotas entre ciclistas
