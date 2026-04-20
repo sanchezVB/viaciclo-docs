@@ -62,6 +62,18 @@ A coleta de GPS **só ocorre enquanto o tracking está ativo** e você **pode pa
 - Flag de onboarding já visto
 - Token de sessão (para manter você logado)
 
+### 2.5. Dados técnicos de diagnóstico (crash reporting)
+
+Quando o aplicativo apresenta uma falha (crash) na **versão de produção instalada via Play Store**, coletamos **automaticamente** as seguintes informações técnicas para corrigir bugs:
+
+- Mensagem de erro e *stack trace* (caminho do erro no código)
+- Modelo do aparelho, versão do Android e versão do app
+- Sequência de eventos anônimos que antecederam o crash (*breadcrumbs*), como "GPS permission denied" ou "saveRide failed" — **sem** coordenadas, nomes ou emails
+
+**Não coletamos** nome, email, endereço IP ou foto junto com o relatório de crash. Você permanece anônimo no painel de diagnóstico. Esses dados são enviados via **Sentry** (veja seção 4) e ficam retidos por 30 dias.
+
+Na versão de desenvolvimento e em builds de teste essa coleta é **desativada**.
+
 ---
 
 ## 3. Para que usamos seus dados
@@ -87,6 +99,7 @@ Seus dados pessoais **não são vendidos**. Compartilhamos apenas o estritamente
 - **Supabase (banco de dados)** — Hospedagem segura dos dados de conta, pedaladas e rotas, na região **sa-east-1 (São Paulo)**. Veja a [Política de Privacidade do Supabase](https://supabase.com/privacy).
 - **OpenRouteService** — Recebe apenas coordenadas de origem e destino quando você calcula uma rota. Não recebe dados de identificação.
 - **OpenStreetMap** — Serve os blocos de mapa. Não recebe dados pessoais, apenas as coordenadas das áreas visualizadas.
+- **Sentry (crash reporting)** — Recebe relatórios técnicos de falhas apenas na versão de produção, **sem dados pessoais** (sem nome, email ou IP). Recebe apenas *stack trace*, modelo do aparelho e *breadcrumbs* anônimos. Veja a [Política de Privacidade do Sentry](https://sentry.io/privacy/).
 
 Nenhum desses serviços recebe dados além do necessário para sua função.
 
