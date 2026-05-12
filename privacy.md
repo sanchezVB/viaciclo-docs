@@ -4,7 +4,7 @@ title: Política de Privacidade — ViaCiclo
 
 # Política de Privacidade
 
-**Última atualização:** 20 de abril de 2026
+**Última atualização:** 12 de maio de 2026
 
 Esta Política de Privacidade descreve como o aplicativo **ViaCiclo** coleta, usa, armazena e protege os dados pessoais dos seus usuários. Ao criar uma conta e usar o aplicativo, você concorda com as práticas descritas abaixo.
 
@@ -55,24 +55,128 @@ A coleta de GPS **só ocorre enquanto o tracking está ativo** e você **pode pa
 - Curtidas em rotas de outros usuários
 - Pontos, nível e estatísticas de uso (quilômetros acumulados, número de pedaladas)
 
-### 2.4. Dados armazenados localmente no dispositivo
+### 2.4. Contatos de emergência (Crash Detection)
+
+Se você ativar a funcionalidade **Crash Detection** em *Configurações → Contatos de emergência*, coletamos para cada contato cadastrado:
+
+- Nome
+- Telefone
+- Relacionamento (opcional)
+
+Limite máximo: **3 contatos**. Os contatos só são usados quando você toca em "Chamar contato de emergência" no alerta de queda detectada — o app abre o discador do Android com o número pré-preenchido e **você** confirma a chamada com o botão verde do discador. **O ViaCiclo não disca nem envia mensagens automaticamente** — todas as ligações são iniciadas manualmente por você.
+
+Os números **nunca** são enviados a terceiros nem incluídos em telemetria. Ficam armazenados apenas na sua conta no Supabase (sa-east-1) protegidos por Row Level Security.
+
+### 2.5. Eventos de detecção de queda
+
+Quando a Crash Detection identifica uma possível queda, registramos:
+
+- Localização aproximada do evento
+- Pico de aceleração medido
+- Sua resposta ao alerta ("estou bem", "chamei contato", "falso alarme", etc.)
+- Opcionalmente, o **trace de aceleração** dos 5 segundos anteriores (toggle "Compartilhar trace anônimo" — ligado por padrão para ajudar a calibrar o algoritmo, pode ser desligado a qualquer momento).
+
+O trace é **anônimo** quando agregado para análise de calibração e nunca é compartilhado fora do nosso banco de dados.
+
+### 2.6. Reports de segurança e Modo "Rotas mais seguras"
+
+#### 2.6.1. Reports de segurança (todos os tipos)
+
+Se você reportar uma ocorrência usando o botão de reporte do app (ícone
+de aviso), coletamos:
+
+- Localização aproximada do ponto reportado (coordenada geográfica)
+- Data e horário do reporte
+- Tipo do incidente: **assédio**, **acidente próximo (near-miss)**,
+  **pavimento ruim**, **furto/roubo** ou outras categorias declaradas
+  no momento do reporte
+- Severidade ("leve", "grave", "fatal") quando aplicável
+- Descrição livre opcional (até 500 caracteres)
+- Flag "anônimo" — **ligada por padrão**
+
+**Visibilidade pública dos reports:**
+
+- Quando o reporte é **anônimo** (padrão), a descrição livre nunca é
+  exibida a outros usuários — só o tipo + a localização agregada.
+- Quando você desmarca o anônimo, a descrição passa a aparecer na
+  visualização pública do report (sem seu nome, mas com a descrição).
+- Em ambos os casos, **seu identificador de usuário nunca é exposto**
+  publicamente, e o horário exato vira só "mês" na visualização pública.
+
+#### 2.6.2. Flag opt-in "Rotas mais seguras" (Modo Mulher)
+
+Em **Perfil → Segurança** existe um toggle chamado **"Rotas mais seguras"**.
+Ele está **desligado por padrão** e armazena uma flag privada no seu
+perfil (`prefers_safer_routes`).
+
+Quando você liga este toggle:
+
+- Suas rotas calculadas tentam **evitar áreas com histórico agregado
+  de reports de assédio** (mapa interno baseado em §2.6.1).
+- A flag em si **nunca é exibida publicamente** — outros usuários, o
+  leaderboard e qualquer view agregada **não conseguem ver** que você
+  tem essa preferência ativada. É um dado estritamente privado da sua
+  conta.
+
+**Como protegemos os dados agregados de assédio:**
+
+- Reports de assédio são tratados de forma **sempre agregada**. Nenhum
+  relatório individual é exibido para outros usuários.
+- Só exibimos uma área no mapa quando **pelo menos 10 usuários diferentes**
+  reportaram aquela região — isso impede que um relatório isolado possa
+  identificar a pessoa que o fez.
+- A granularidade temporal é mensal (nunca exibimos a hora exata) e a área
+  mínima é uma célula de ~110 m × ~110 m — não exibimos o ponto preciso
+  do report.
+- Dados são considerados para o mapa por uma **janela de 180 dias**;
+  reports mais antigos deixam de influenciar o roteamento.
+
+Você pode desativar o Modo "Rotas mais seguras" a qualquer momento no
+mesmo toggle (Perfil → Segurança → "Rotas mais seguras"), e pode pedir
+exclusão dos seus reports a qualquer momento via o email do DPO (§1).
+
+### 2.7. Dados armazenados localmente no dispositivo
 
 - Cache de blocos de mapa (tiles) para funcionamento offline
 - Preferência de tema (claro/escuro/sistema)
 - Flag de onboarding já visto
 - Token de sessão (para manter você logado)
 
-### 2.5. Dados técnicos de diagnóstico (crash reporting)
+### 2.8. Eventos internos de uso (analytics privacy-first)
 
-Quando o aplicativo apresenta uma falha (crash) na **versão de produção instalada via Play Store**, coletamos **automaticamente** as seguintes informações técnicas para corrigir bugs:
+O app registra eventos agregados de uso **dentro do nosso próprio
+servidor** (Supabase) para melhorar segurança, calibrar a pontuação de
+rotas e detectar problemas de UX. **Não usamos Firebase Analytics,
+Google Analytics, Mixpanel nem qualquer ferramenta de terceiros.**
 
-- Mensagem de erro e *stack trace* (caminho do erro no código)
-- Modelo do aparelho, versão do Android e versão do app
-- Sequência de eventos anônimos que antecederam o crash (*breadcrumbs*), como "GPS permission denied" ou "saveRide failed" — **sem** coordenadas, nomes ou emails
+Exemplos de eventos: "rota gerada", "pedalada finalizada", "Modo
+seguro ativado". Para cada evento salvamos no máximo:
 
-**Não coletamos** nome, email, endereço IP ou foto junto com o relatório de crash. Você permanece anônimo no painel de diagnóstico. Esses dados são enviados via **Sentry** (veja seção 4) e ficam retidos por 30 dias.
+- Identificador anônimo de sessão (gerado quando o app abre, não
+  sobrevive a reinstalações)
+- Nome do evento (ex.: `route_completed`)
+- Tela onde ocorreu (ex.: `tracking`)
+- Métricas numéricas agregadas (ex.: distância em km, score médio
+  calculado, perfil de rota escolhido)
 
-Na versão de desenvolvimento e em builds de teste essa coleta é **desativada**.
+**Não salvamos** nesses eventos: coordenadas GPS, trajetos completos,
+seu email, telefone, identificador de dispositivo, texto livre digitado
+por você ou qualquer dado que permita reidentificação.
+
+### 2.9. Feedback que você envia voluntariamente
+
+Quando você toca em **"Reportar problema"** no Perfil ou responde ao
+modal de feedback após uma pedalada, salvamos:
+
+- Sua avaliação (👍/😐/👎) e categoria escolhida
+- Mensagem opcional que você digitar (até 2.000 caracteres)
+- Identificador da pedalada associada (se aplicável)
+- Métricas numéricas agregadas da rota (distância, score calculado,
+  perfil), **sem coordenadas GPS**
+
+Esse feedback fica visível apenas para nós (mantenedores do app) e
+para você mesmo. Não é compartilhado com outros usuários e não aparece
+em nenhum ranking ou mapa público.
 
 ---
 
@@ -86,6 +190,9 @@ Na versão de desenvolvimento e em builds de teste essa coleta é **desativada**
 | Rotas compartilhadas | Exibir rotas na aba Social para outros ciclistas |
 | Pontos e estatísticas | Exibir ranking (leaderboard) e gamificação |
 | Cache de mapa local | Permitir uso do app sem rede |
+| Contatos de emergência | Discar manualmente em caso de queda detectada |
+| Trace de aceleração (anônimo) | Calibrar o algoritmo de Crash Detection |
+| Reports de assédio (localização + data, se "Rotas mais seguras" ativo) | Calcular áreas de avoidance para o roteamento; só exibidos em agregados com ≥ 10 contribuintes distintos |
 
 **Não utilizamos seus dados para publicidade, venda ou marketing de terceiros.**
 
@@ -99,7 +206,6 @@ Seus dados pessoais **não são vendidos**. Compartilhamos apenas o estritamente
 - **Supabase (banco de dados)** — Hospedagem segura dos dados de conta, pedaladas e rotas, na região **sa-east-1 (São Paulo)**. Veja a [Política de Privacidade do Supabase](https://supabase.com/privacy).
 - **OpenRouteService** — Recebe apenas coordenadas de origem e destino quando você calcula uma rota. Não recebe dados de identificação.
 - **OpenStreetMap** — Serve os blocos de mapa. Não recebe dados pessoais, apenas as coordenadas das áreas visualizadas.
-- **Sentry (crash reporting)** — Recebe relatórios técnicos de falhas apenas na versão de produção, **sem dados pessoais** (sem nome, email ou IP). Recebe apenas *stack trace*, modelo do aparelho e *breadcrumbs* anônimos. Veja a [Política de Privacidade do Sentry](https://sentry.io/privacy/).
 
 Nenhum desses serviços recebe dados além do necessário para sua função.
 
@@ -170,3 +276,11 @@ Esta política é regida pelas leis da República Federativa do Brasil. Fica ele
 ---
 
 *Documento vigente a partir de 20 de abril de 2026.*
+
+<!--
+Doc complementar (não destinado ao usuário final): a especificação técnica
+interna da privacidade — princípios, RLS, k-anonymity, defaults — vive em
+`docs/PRIVACY_INTERNAL.md`. Toda mudança de coleta/visibilidade deve
+aparecer nos dois lugares de forma coerente.
+-->
+
