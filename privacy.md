@@ -19,7 +19,7 @@ O **ViaCiclo** é mantido por:
 **Vinicius Brasil Sanchez**
 Microempreendedor Individual (MEI)
 CNPJ: **65.139.333/0001-41**
-Email de contato e encarregado de dados (DPO): **viniciusbrasil.30@gmail.com**
+Email de contato e encarregado de dados (DPO): **viaciclo.app@gmail.com**
 
 Qualquer dúvida, solicitação ou exercício de direitos previstos na LGPD deve ser enviada para este email.
 
@@ -253,7 +253,7 @@ Você tem direito a, a qualquer momento:
 6. **Obter informação** sobre com quem seus dados foram compartilhados
 7. **Opor-se** a tratamentos específicos
 
-Para exercer qualquer desses direitos, envie um email para **viniciusbrasil.30@gmail.com** com o assunto "LGPD — [seu pedido]". O prazo de resposta é de **até 15 dias**.
+Para exercer qualquer desses direitos, envie um email para **viaciclo.app@gmail.com** com o assunto "LGPD — [seu pedido]". O prazo de resposta é de **até 15 dias**.
 
 ---
 

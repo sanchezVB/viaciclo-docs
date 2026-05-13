@@ -14,6 +14,6 @@ App gratuito para ciclistas brasileiros. Mapa de ciclovias, rastreamento de peda
 ## Contato
 
 **ViaCiclo** — CNPJ 65.139.333/0001-41
-Email: viniciusbrasil.30@gmail.com
+Email: viaciclo.app@gmail.com
 
 Código-fonte: [github.com/sanchezVB/viaciclo_app](https://github.com/sanchezVB/viaciclo_app)

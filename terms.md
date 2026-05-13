@@ -21,7 +21,7 @@ O **ViaCiclo** é um aplicativo gratuito para smartphones Android que oferece:
 - Ranking e gamificação
 
 **Responsável:** Vinicius Brasil Sanchez (MEI) — CNPJ **65.139.333/0001-41**
-**Contato:** viniciusbrasil.30@gmail.com
+**Contato:** viaciclo.app@gmail.com
 
 ---
 
