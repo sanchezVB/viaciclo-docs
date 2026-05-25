@@ -17,7 +17,6 @@ Esta política está em conformidade com a **Lei Geral de Proteção de Dados Pe
 O **ViaCiclo** é mantido por:
 
 **Vinicius Brasil Sanchez**
-Microempreendedor Individual (MEI)
 CNPJ: **65.139.333/0001-41**
 Email de contato e encarregado de dados (DPO): **viaciclo.app@gmail.com**
 

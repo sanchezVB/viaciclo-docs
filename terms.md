@@ -20,7 +20,7 @@ O **ViaCiclo** é um aplicativo gratuito para smartphones Android que oferece:
 - Compartilhamento de rotas entre ciclistas
 - Ranking e gamificação
 
-**Responsável:** Vinicius Brasil Sanchez (MEI) — CNPJ **65.139.333/0001-41**
+**Responsável:** Vinicius Brasil Sanchez — CNPJ **65.139.333/0001-41**
 **Contato:** viaciclo.app@gmail.com
 
 ---
@@ -91,7 +91,6 @@ Na máxima extensão permitida pela lei, o ViaCiclo e seu responsável **não re
 
 ## 6. Propriedade intelectual
 
-- O **código-fonte** do ViaCiclo é disponibilizado publicamente em [github.com/sanchezVB/viaciclo_app](https://github.com/sanchezVB/viaciclo_app).
 - **Marca, nome e logo "ViaCiclo"** pertencem ao responsável pelo app.
 - **Dados de ciclovias** são obtidos do OpenStreetMap sob licença [ODbL](https://www.openstreetmap.org/copyright).
 - **Mapas** são fornecidos pelo [OpenStreetMap](https://www.openstreetmap.org/).
