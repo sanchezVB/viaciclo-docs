@@ -4,7 +4,7 @@ title: Termos de Uso — ViaCiclo
 
 # Termos de Uso
 
-**Última atualização:** 20 de abril de 2026
+**Última atualização:** 17 de agosto de 2026
 
 Ao instalar, acessar ou usar o aplicativo **ViaCiclo**, você concorda com estes Termos de Uso. Se você não concorda, não use o aplicativo.
 
@@ -15,9 +15,13 @@ Ao instalar, acessar ou usar o aplicativo **ViaCiclo**, você concorda com estes
 O **ViaCiclo** é um aplicativo gratuito para smartphones Android que oferece:
 
 - Visualização de ciclovias e ciclofaixas em cidades brasileiras
-- Cálculo de rotas seguras para bicicleta
-- Rastreamento de pedaladas com GPS
+- Cálculo de rotas com estimativa de segurança por trecho (Safety Score)
+- Rastreamento de pedaladas com GPS, inclusive com a tela bloqueada
+- Detecção de possível queda, com acionamento manual de contato de emergência
+- Relatos de segurança e de assédio, exibidos apenas de forma agregada
 - Compartilhamento de rotas entre ciclistas
+- Assistente de conversa sobre segurança no pedal (CoPiloto)
+- Mapas para uso sem conexão
 - Ranking e gamificação
 
 **Responsável:** Vinicius Brasil Sanchez — CNPJ **65.139.333/0001-41**
@@ -58,6 +62,16 @@ Ao compartilhar uma rota na aba Social, você:
 
 Você mantém todos os direitos sobre o conteúdo que cria.
 
+Ao enviar **relatos de segurança ou de assédio**, você declara que o
+relato corresponde a algo que você vivenciou ou presenciou. Esses
+relatos são exibidos a outros usuários **apenas de forma agregada e
+anônima**, nunca vinculados ao seu nome ou perfil. Não publique dados
+que identifiquem terceiros.
+
+Relatos manifestamente falsos, ofensivos ou usados para prejudicar
+pessoas ou estabelecimentos podem ser removidos, e a conta responsável,
+suspensa.
+
 ---
 
 ## 5. Limitação de responsabilidade
@@ -75,15 +89,67 @@ O ViaCiclo **é uma ferramenta de apoio** e **não substitui** bom senso, atenç
 
 Rotas calculadas pelo app podem conter imprecisões, vias em obras ou trechos temporariamente interditados. Sempre verifique as condições reais antes de iniciar.
 
-### 5.2. Dados de GPS
+### 5.2. Estimativa de segurança das rotas (Safety Score)
+
+O Safety Score é uma **estimativa estatística**, calculada a partir de
+histórico de sinistros, horário, iluminação, clima e relatos de outros
+usuários. Ele indica risco **relativo** entre trechos — não é uma
+garantia de que um caminho é seguro, nem uma afirmação de que outro é
+perigoso.
+
+Os pesos que compõem o cálculo ainda estão em **fase de calibração**:
+foram definidos a partir da literatura técnica e de julgamento de
+engenharia, e ainda não foram validados estatisticamente com dados de
+campo. Uma rota com pontuação alta continua exigindo a mesma atenção que
+qualquer outra.
+
+### 5.3. Detecção de queda e contatos de emergência
+
+A detecção de queda é um **recurso auxiliar** e **não é um serviço de
+emergência**. Ela funciona por sensores do próprio aparelho e está
+sujeita a falhas nas duas direções: pode **deixar de identificar** uma
+queda real e pode **sinalizar** uma queda que não ocorreu.
+
+Além disso:
+
+- O acionamento é sempre **manual** — o app apresenta o alerta, mas a
+  ligação só acontece se você tocar no botão;
+- O funcionamento depende de bateria, sinal de rede, permissões
+  concedidas e de o sistema operacional não encerrar o app em segundo
+  plano — algo comum em aparelhos com gestão agressiva de energia;
+- Os contatos de emergência que você cadastra **não são notificados
+  automaticamente**.
+
+**Nunca dependa exclusivamente deste recurso.** Em situação de
+emergência, acione os serviços públicos (SAMU 192, Bombeiros 193,
+Polícia 190).
+
+### 5.4. Assistente de conversa (CoPiloto)
+
+As respostas do CoPiloto são geradas automaticamente e podem conter
+**erros, imprecisões ou informações desatualizadas**. Elas têm caráter
+informativo e **não constituem orientação profissional** de qualquer
+natureza — médica, jurídica, mecânica ou de segurança.
+
+Confira informações relevantes em fontes oficiais antes de agir com base
+em uma resposta do assistente.
+
+### 5.5. Relatos de outros usuários
+
+Relatos de segurança e de assédio são enviados por outras pessoas e
+**não são verificados individualmente** por nós. Eles refletem
+percepções de quem os enviou. A ausência de relatos em um trecho não
+significa que ele seja seguro.
+
+### 5.6. Dados de GPS
 
 A precisão da localização depende do seu dispositivo e das condições do sinal. O ViaCiclo não se responsabiliza por erros de cálculo de distância, velocidade ou rota decorrentes de falhas do GPS.
 
-### 5.3. Disponibilidade do serviço
+### 5.7. Disponibilidade do serviço
 
-O app é fornecido **"como está"** (as is). Não garantimos disponibilidade ininterrupta, ausência de erros ou que o serviço atenderá a todas as suas expectativas. Manutenções, atualizações ou falhas de serviços de terceiros (Google, Supabase, OpenStreetMap) podem causar indisponibilidade temporária.
+O app é fornecido **"como está"** (as is). Não garantimos disponibilidade ininterrupta, ausência de erros ou que o serviço atenderá a todas as suas expectativas. Manutenções, atualizações ou falhas de serviços de terceiros (Google, Supabase, OpenStreetMap, Mapbox, HERE) podem causar indisponibilidade temporária.
 
-### 5.4. Limites
+### 5.8. Limites
 
 Na máxima extensão permitida pela lei, o ViaCiclo e seu responsável **não respondem por danos indiretos, incidentais ou consequenciais** decorrentes do uso do aplicativo, incluindo acidentes de trânsito, lesões pessoais, danos materiais ou perda de dados.
 
