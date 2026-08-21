@@ -4,7 +4,7 @@ title: Política de Privacidade — ViaCiclo
 
 # Política de Privacidade
 
-**Última atualização:** 12 de maio de 2026
+**Última atualização:** 17 de agosto de 2026
 
 Esta Política de Privacidade descreve como o aplicativo **ViaCiclo** coleta, usa, armazena e protege os dados pessoais dos seus usuários. Ao criar uma conta e usar o aplicativo, você concorda com as práticas descritas abaixo.
 
@@ -177,6 +177,36 @@ Esse feedback fica visível apenas para nós (mantenedores do app) e
 para você mesmo. Não é compartilhado com outros usuários e não aparece
 em nenhum ranking ou mapa público.
 
+### 2.10. Foto de perfil que você escolhe
+
+Ao editar seu perfil, você pode substituir a foto vinda do Google por uma
+imagem sua. Para isso, o app pede permissão de acesso à **galeria** ou à
+**câmera** do aparelho — apenas no momento em que você toca para escolher a
+foto, e somente a imagem selecionada é enviada.
+
+Não acessamos, listamos nem enviamos qualquer outra imagem do seu
+dispositivo. Se você recusar a permissão, o restante do app continua
+funcionando normalmente.
+
+### 2.11. Conversas com o CoPiloto (assistente de IA)
+
+O **CoPiloto** é um assistente opcional, acessível pelo Perfil, que
+responde a perguntas sobre pedalar com segurança. Ele só recebe dados
+quando você abre a conversa e envia uma mensagem. Nesse momento, são
+transmitidos ao nosso serviço de IA:
+
+- O **texto que você escreveu** na conversa
+- Sua **localização aproximada** (latitude e longitude), quando disponível,
+  para que a resposta considere onde você está
+- O identificador da rota em questão, quando a conversa parte de uma rota
+- Um identificador de sessão, para dar continuidade ao diálogo
+
+**Não envie dados sensíveis nessa conversa** (documentos, senhas, dados de
+saúde ou informações de terceiros) — como em qualquer assistente, o texto
+digitado é processado para gerar a resposta.
+
+Se você nunca abrir o CoPiloto, nenhum dado é enviado a esse serviço.
+
 ---
 
 ## 3. Para que usamos seus dados
@@ -191,6 +221,9 @@ em nenhum ranking ou mapa público.
 | Cache de mapa local | Permitir uso do app sem rede |
 | Contatos de emergência | Discar manualmente em caso de queda detectada |
 | Trace de aceleração (anônimo) | Calibrar o algoritmo de Crash Detection |
+| Foto de perfil enviada por você | Exibir seu avatar no app e no ranking |
+| Mensagens e localização no CoPiloto | Gerar a resposta do assistente |
+| Relatórios de falha (sem identificação pessoal) | Detectar e corrigir erros do app |
 | Reports de assédio (localização + data, se "Rotas mais seguras" ativo) | Calcular áreas de avoidance para o roteamento; só exibidos em agregados com ≥ 10 contribuintes distintos |
 
 **Não utilizamos seus dados para publicidade, venda ou marketing de terceiros.**
@@ -205,6 +238,10 @@ Seus dados pessoais **não são vendidos**. Compartilhamos apenas o estritamente
 - **Supabase (banco de dados)** — Hospedagem segura dos dados de conta, pedaladas e rotas, na região **sa-east-1 (São Paulo)**. Veja a [Política de Privacidade do Supabase](https://supabase.com/privacy).
 - **OpenRouteService** — Recebe apenas coordenadas de origem e destino quando você calcula uma rota. Não recebe dados de identificação.
 - **OpenStreetMap** — Serve os blocos de mapa. Não recebe dados pessoais, apenas as coordenadas das áreas visualizadas.
+- **Mapbox (mapa, quando disponível)** — Alternativa ao OpenStreetMap para os blocos de mapa. Recebe apenas as coordenadas das áreas visualizadas, sem dados de identificação. Veja a [Política de Privacidade do Mapbox](https://www.mapbox.com/legal/privacy).
+- **HERE (busca de endereços)** — Recebe o texto que você digita ao buscar um destino e as coordenadas para converter endereço em ponto no mapa. Não recebe dados de identificação. Veja a [Política de Privacidade da HERE](https://legal.here.com/privacy/policy).
+- **Sentry (monitoramento de falhas)** — Recebe relatórios técnicos quando o app apresenta erro: tipo da falha, versão do app, modelo do aparelho e a sequência de ações que antecedeu o problema. O envio de dados pessoais está **desativado** na configuração do app. Veja a [Política de Privacidade do Sentry](https://sentry.io/privacy/).
+- **Serviço de IA do ViaCiclo (CoPiloto)** — Recebe apenas o que está descrito no item 2.11, e somente se você usar o assistente.
 
 Nenhum desses serviços recebe dados além do necessário para sua função.
 
