@@ -4,7 +4,7 @@ title: Política de Privacidade — ViaCiclo
 
 # Política de Privacidade
 
-**Última atualização:** 17 de agosto de 2026
+**Última atualização:** 16 de setembro de 2026
 
 Esta Política de Privacidade descreve como o aplicativo **ViaCiclo** coleta, usa, armazena e protege os dados pessoais dos seus usuários. Ao criar uma conta e usar o aplicativo, você concorda com as práticas descritas abaixo.
 
@@ -45,7 +45,20 @@ Enquanto você utiliza a funcionalidade **"Pedalar"** (rastreamento de pedaladas
 - Altitude (quando disponível), velocidade e timestamp de cada ponto
 - Distância percorrida, tempo total, velocidade média
 
-A coleta de GPS **só ocorre enquanto o tracking está ativo** e você **pode parar a qualquer momento**. Em nenhum outro momento o app coleta sua localização em segundo plano.
+A coleta de GPS **só ocorre enquanto o tracking está ativo** e você **pode
+parar a qualquer momento**.
+
+Enquanto a pedalada está em andamento, o rastreamento continua **com a tela
+bloqueada ou com o app em segundo plano** — caso contrário a rota ficaria
+truncada sempre que você guardasse o celular no bolso. Nesse período o
+Android exibe uma **notificação permanente** informando que o ViaCiclo está
+usando sua localização; ela não pode ser dispensada enquanto o tracking
+estiver ativo, justamente para que você sempre saiba que a coleta está
+acontecendo.
+
+Ao encerrar a pedalada, a notificação some e a coleta para por completo.
+**Fora de uma pedalada ativa, o app não coleta sua localização** — nem em
+primeiro, nem em segundo plano.
 
 ### 2.3. Dados de uso do aplicativo
 
@@ -145,8 +158,13 @@ exclusão dos seus reports a qualquer momento via o email do DPO (§1).
 
 O app registra eventos agregados de uso **dentro do nosso próprio
 servidor** (Supabase) para melhorar segurança, calibrar a pontuação de
-rotas e detectar problemas de UX. **Não usamos Firebase Analytics,
-Google Analytics, Mixpanel nem qualquer ferramenta de terceiros.**
+rotas e detectar problemas de UX. **Não usamos nenhuma ferramenta de
+analytics, publicidade ou atribuição de terceiros** — nem Firebase
+Analytics, nem Google Analytics, nem Mixpanel, nem equivalentes.
+
+O app usa o Firebase apenas para **entrega de notificações push**
+(Firebase Cloud Messaging), descrito no item 2.12 — nunca para analytics
+ou perfilamento.
 
 Exemplos de eventos: "rota gerada", "pedalada finalizada", "Modo
 seguro ativado". Para cada evento salvamos no máximo:
@@ -207,6 +225,33 @@ digitado é processado para gerar a resposta.
 
 Se você nunca abrir o CoPiloto, nenhum dado é enviado a esse serviço.
 
+### 2.12. Notificações push
+
+O app pode enviar notificações (por exemplo, quando alguém interage com
+uma rota que você compartilhou). Para isso usamos o **Firebase Cloud
+Messaging (FCM)**, serviço do Google.
+
+A permissão de notificação é pedida **apenas quando você abre a aba
+Social pela primeira vez**, e não no primeiro uso do app. Se você
+recusar, o restante do app continua funcionando normalmente.
+
+Quando a permissão é concedida, o SDK do Google gera no seu aparelho um
+**identificador de entrega de mensagens** (token FCM). Ele serve apenas
+para endereçar a notificação ao dispositivo correto. Esse identificador:
+
+- **não** contém seu nome, email, telefone ou localização;
+- é específico da instalação do app — muda se você reinstalar;
+- é **apagado do aparelho quando você sai da conta** (logout), de modo
+  que o dispositivo deixa de receber notificações.
+
+O conteúdo das notificações é gerado pelo ViaCiclo. O Google atua apenas
+como intermediário de entrega. Veja a [Política de Privacidade do
+Google](https://policies.google.com/privacy).
+
+**Notificações locais de queda.** O alerta exibido quando a detecção de
+queda é acionada é gerado **dentro do próprio aparelho** e não passa pelo
+FCM nem por qualquer servidor.
+
 ---
 
 ## 3. Para que usamos seus dados
@@ -224,6 +269,7 @@ Se você nunca abrir o CoPiloto, nenhum dado é enviado a esse serviço.
 | Foto de perfil enviada por você | Exibir seu avatar no app e no ranking |
 | Mensagens e localização no CoPiloto | Gerar a resposta do assistente |
 | Relatórios de falha (sem identificação pessoal) | Detectar e corrigir erros do app |
+| Identificador de notificação (FCM) | Endereçar notificações ao seu aparelho |
 | Reports de assédio (localização + data, se "Rotas mais seguras" ativo) | Calcular áreas de avoidance para o roteamento; só exibidos em agregados com ≥ 10 contribuintes distintos |
 
 **Não utilizamos seus dados para publicidade, venda ou marketing de terceiros.**
@@ -241,6 +287,7 @@ Seus dados pessoais **não são vendidos**. Compartilhamos apenas o estritamente
 - **Mapbox (mapa, quando disponível)** — Alternativa ao OpenStreetMap para os blocos de mapa. Recebe apenas as coordenadas das áreas visualizadas, sem dados de identificação. Veja a [Política de Privacidade do Mapbox](https://www.mapbox.com/legal/privacy).
 - **HERE (busca de endereços)** — Recebe o texto que você digita ao buscar um destino e as coordenadas para converter endereço em ponto no mapa. Não recebe dados de identificação. Veja a [Política de Privacidade da HERE](https://legal.here.com/privacy/policy).
 - **Sentry (monitoramento de falhas)** — Recebe relatórios técnicos quando o app apresenta erro: tipo da falha, versão do app, modelo do aparelho e a sequência de ações que antecedeu o problema. O envio de dados pessoais está **desativado** na configuração do app. Veja a [Política de Privacidade do Sentry](https://sentry.io/privacy/).
+- **Firebase Cloud Messaging (Google)** — Gera e administra o identificador de entrega do seu aparelho e transporta o conteúdo da notificação até ele. Não recebe seu email, telefone, localização nem histórico de pedaladas. Veja a [Política de Privacidade do Google](https://policies.google.com/privacy).
 - **Serviço de IA do ViaCiclo (CoPiloto)** — Recebe apenas o que está descrito no item 2.11, e somente se você usar o assistente.
 
 Nenhum desses serviços recebe dados além do necessário para sua função.
@@ -274,6 +321,7 @@ Apesar das medidas, nenhum sistema é 100% seguro. Em caso de incidente de segur
 - **Enquanto sua conta estiver ativa:** todos os dados ficam armazenados.
 - **Após exclusão da conta:** todos os dados pessoais são removidos em até 30 dias, exceto quando a lei exigir retenção.
 - **Cache local no celular:** removido ao desinstalar o app ou limpar manualmente nas configurações.
+- **Identificador de notificação (FCM):** apagado do aparelho ao sair da conta.
 
 ---
 
